@@ -6,7 +6,7 @@ LETTERS = ('А'..'Я').map(&:to_s) << 'Ё'
 
 puts '* * * Игра Виселица * * *'
 
-game = Game.new('ЁЖИК') # ('СВОЙСТВО')
+game = Game.new
 puts game.description
 
 loop do
