@@ -36,7 +36,9 @@ class Game
     begin
       words = File.readlines(file_path, chomp: true)
     rescue Errno::ENOENT => e
-      raise e.message
+      puts "Ошибка чтения файла со словами!"
+      puts e.message
+      words = ['программа']
     end
     words.sample.upcase
   end
