@@ -66,15 +66,13 @@ class Game
   end
 
   def word
-    result = ''
-    @word.chars do |letter|
-      result << if @correct_letters.include?(normalized(letter))
-                  letter.upcase
-                else
-                  '-'
-                end
-    end
-    result
+    @word.chars.map do |letter|
+      if @correct_letters.include?(normalized(letter))
+        letter.upcase
+      else
+        '-'
+      end
+    end.join
   end
 
   def field
@@ -82,7 +80,7 @@ class Game
     File.readlines(file_path, chomp: true)
   end
 
-  def normalized(letters)
-    letters.tr('ЁЙ', 'ЕИ')
+  def normalized(letter)
+    letter.tr('ЁЙ', 'ЕИ')
   end
 end
