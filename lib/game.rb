@@ -1,3 +1,5 @@
+require_relative 'sklonator'
+
 # Game Hangman
 class Game
   LETTERS = ('А'..'Я').map(&:to_s) << 'Ё'
@@ -5,7 +7,7 @@ class Game
   attr_reader :attempts
 
   def initialize(word)
-    @word = word
+    @word = word.upcase
     @attempts = 0
     @state = 0
     @wrong_letters = []
@@ -51,11 +53,13 @@ class Game
 
   def result
     if guessed?
-      "\nВы угадали слово #{@word} за #{@attempts} попыток и заслуженно победили!"
+      attempts_str = Sklonator.num_to_str(@attempts, 'попытка', 'попытки', 'попыток', true)
+      "\nВы угадали слово #{@word} за #{attempts_str} и заслуженно победили!"
     else
       result = field
       if @wrong_letters.size.positive?
-        result << "\nВы пробовали (#{@wrong_letters.size} букв): #{@wrong_letters.join(', ')}"
+        letters_str = Sklonator.num_to_str(@wrong_letters.size, 'букву', 'буквы', 'букв', true)
+        result << "\nВы пробовали (#{letters_str}): #{@wrong_letters.join(', ')}"
       end
       result << "\nВы проиграли! Было загадано слово #{@word}"
     end
