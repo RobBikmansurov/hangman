@@ -3,7 +3,16 @@
 require_relative 'lib/game'
 require_relative 'lib/game_io_console'
 
-game = Game.new
+file_path = File.join(File.dirname(__FILE__), 'data', 'words.txt')
+begin
+  word = File.readlines(file_path, chomp: true).sample
+rescue Errno::ENOENT => e
+  puts 'Ошибка чтения файла со словами!'
+  puts e.message
+  exit(2)
+end
+
+game = Game.new(word)
 game_console = GameIOConsole.new(game)
 
 game_console.greeting

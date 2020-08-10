@@ -4,8 +4,8 @@ class Game
 
   attr_reader :attempts
 
-  def initialize(word = nil)
-    @word = word&.upcase || from_file
+  def initialize(word)
+    @word = word
     @attempts = 0
     @state = 0
     @wrong_letters = []
@@ -31,18 +31,6 @@ class Game
 
   def guessed?
     (word.chars - @correct_letters).size.zero? || (normalized(word).chars - @correct_letters).size.zero?
-  end
-
-  def from_file
-    file_path = File.join(File.dirname(__FILE__), '..', 'data', 'words.txt')
-    begin
-      words = File.readlines(file_path, chomp: true)
-    rescue Errno::ENOENT => e
-      puts 'Ошибка чтения файла со словами!'
-      puts e.message
-      words = ['программа']
-    end
-    words.sample.upcase
   end
 
   def errors
