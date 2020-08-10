@@ -1,26 +1,18 @@
 # Задача 22-5 — Виселица в github
 #
 require_relative 'lib/game'
-
-LETTERS = ('А'..'Я').map(&:to_s) << 'Ё'
-
-puts '* * * Игра Виселица * * *'
+require_relative 'lib/game_io_console'
 
 game = Game.new
-puts game.description
+game_console = GameIOConsole.new(game)
+
+game_console.greeting
 
 loop do
-  puts
-  puts "Загадано слово: #{game.word}"
-  puts game.field
-  puts "Вы вводили (#{game.errors.size} букв):  #{game.errors.join(', ')}" if game.errors.size.positive?
-  print 'Введите букву: '
-
-  until LETTERS.include?(letter = STDIN.gets.chomp.upcase)
-    puts 'Нужно ввести русскую букву: '
-  end
+  game_console.show_field
+  letter = game_console.letter
   game.estimate(letter)
   break if game.finished?
 end
 
-puts game.result
+game_console.show_result

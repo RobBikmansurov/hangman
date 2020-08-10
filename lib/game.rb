@@ -1,5 +1,7 @@
 # Game Hangman
 class Game
+  LETTERS = ('А'..'Я').map(&:to_s) << 'Ё'
+
   attr_reader :attempts
 
   def initialize(word = nil)
@@ -32,11 +34,11 @@ class Game
   end
 
   def from_file
-    file_path = File.join(File.dirname(__FILE__), '..', 'data', 'wordsq.txt')
+    file_path = File.join(File.dirname(__FILE__), '..', 'data', 'words.txt')
     begin
       words = File.readlines(file_path, chomp: true)
     rescue Errno::ENOENT => e
-      puts "Ошибка чтения файла со словами!"
+      puts 'Ошибка чтения файла со словами!'
       puts e.message
       words = ['программа']
     end
