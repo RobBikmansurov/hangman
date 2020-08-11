@@ -1,6 +1,6 @@
 # hangman
-Hangman (linguistic game) - training Ruby project
-
+Hangman (linguistic game) - training Ruby project.
+![Hangman game](hangman.gif)
 [Статья в Википедии](https://ru.wikipedia.org/wiki/Виселица_(игра))
 	
 ## Technologies
