@@ -11,7 +11,7 @@ To run this project, install the Ruby, save project locally using git and run it
 
 ```bash
 $ git clone git@github.com:RobBikmansurov/hangman.git
-$ cd ../hangman
+$ cd ./hangman
 $ ruby main.rb
 ```
 ## Status
@@ -28,5 +28,5 @@ Created by [Rob Bikmansurov](mailto:robb@mail.ru) - feel free to contact me!
 MIT
 see in [LICENSE](LICENSE) file
 
-Copyright &copy; 2020 Rob Bikmansurov
+Copyright &copy; 2020 [Rob Bikmansurov](https://robbikmansurov.github.io/cv/)
 
