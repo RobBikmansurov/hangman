@@ -12,10 +12,9 @@ class GameIOConsole
   end
 
   def show_field
-    puts
-    puts "Загадано слово: #{@game.word}"
+    puts "\nЗагадано слово: #{@game.word}"
     puts @game.field
-    puts "Вы вводили (#{@game.errors.size} букв):  #{@game.errors.join(', ')}" if @game.errors.size.positive?
+    puts "Вы вводили #{@game.letters_declension}: #{@game.errors.join(', ')}" if @game.errors.size.positive?
     print 'Введите букву: '
   end
 

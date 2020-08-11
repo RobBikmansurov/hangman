@@ -7,7 +7,7 @@ class Game
   attr_reader :attempts
 
   def initialize(word)
-    @word = word.upcase
+    @word = word.upcased
     @attempts = 0
     @state = 0
     @wrong_letters = []
@@ -46,23 +46,17 @@ class Game
     if normalized_word.chars.include?(normalized_letter)
       @correct_letters << normalized_letter unless @correct_letters.include?(normalized_letter)
     else
-      @wrong_letters << letter unless @wrong_letters.include?(letter)
+      @wrong_letters << letter unless normalized(@wrong_letters.join).include?(normalized_letter)
       @state += 1
     end
   end
 
   def result
-    if guessed?
-      attempts_str = Sklonator.num_to_str(@attempts, 'попытка', 'попытки', 'попыток', true)
-      "\nВы угадали слово #{@word} за #{attempts_str} и заслуженно победили!"
-    else
-      result = field
-      if @wrong_letters.size.positive?
-        letters_str = Sklonator.num_to_str(@wrong_letters.size, 'букву', 'буквы', 'букв', true)
-        result << "\nВы пробовали (#{letters_str}): #{@wrong_letters.join(', ')}"
-      end
-      result << "\nВы проиграли! Было загадано слово #{@word}"
-    end
+    return "\nВы угадали слово #{@word} за #{attempts_declension} и заслуженно победили!" if guessed?
+
+    result = field
+    result << "\nВы пробовали (#{letters_declension}): #{@wrong_letters.join(', ')}" if @wrong_letters.size.positive?
+    result << "\nВы проиграли! Было загадано слово #{@word}"
   end
 
   def word
@@ -78,6 +72,16 @@ class Game
   def field
     file_path = File.join(File.dirname(__FILE__), '..', 'data', "#{@state}.txt")
     File.readlines(file_path, chomp: true)
+  end
+
+  def letters_declension
+    Sklonator.num_to_str(@wrong_letters.size, 'букву', 'буквы', 'букв', true)
+  end
+
+  private
+
+  def attempts_declension
+    Sklonator.num_to_str(@attempts, 'попытка', 'попытки', 'попыток', true)
   end
 
   def normalized(letter)
