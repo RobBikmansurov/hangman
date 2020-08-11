@@ -7,7 +7,7 @@ class Game
   attr_reader :attempts
 
   def initialize(word)
-    @word = word.upcased
+    @word = word.upcase
     @attempts = 0
     @state = 0
     @wrong_letters = []
