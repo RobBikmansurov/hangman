@@ -7,8 +7,8 @@ file_path = File.join(File.dirname(__FILE__), 'data', 'words.txt')
 begin
   word = File.readlines(file_path, chomp: true).sample
 rescue Errno::ENOENT => e
-  puts 'Ошибка чтения файла со словами!'
   puts e.message
+  puts 'Ошибка чтения файла со словами!'
   exit(2)
 end
 
