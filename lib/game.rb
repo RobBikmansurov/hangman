@@ -42,11 +42,13 @@ class Game
   def estimate(letter)
     @attempts += 1
     normalized_letter = normalized(letter)
+    return if normalized(@wrong_letters.join).include?(normalized_letter)
+
     normalized_word = normalized(@word)
     if normalized_word.chars.include?(normalized_letter)
       @correct_letters << normalized_letter unless @correct_letters.include?(normalized_letter)
     else
-      @wrong_letters << letter unless normalized(@wrong_letters.join).include?(normalized_letter)
+      @wrong_letters << letter
       @state += 1
     end
   end
