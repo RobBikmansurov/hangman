@@ -6,16 +6,21 @@ Hangman (linguistic game) - training Ruby project.
 ## Technologies
 Ruby
 
+gem colorize adds colors to the game!
+
 ## Setup
 To run this project, install the Ruby, save project locally using git and run it:
 
 ```bash
 $ git clone git@github.com:RobBikmansurov/hangman.git
 $ cd ./hangman
-$ ruby main.rb
+$ bundle 
+$ bundle exec ruby main.rb
 ```
 ## Status
 This is my training ruby project from lesson 22-5.
+
+After task 52-2 the game plays colors.
 
 ## Inspiration
 Project inspired by great video from goodprogrammer.ru :smile:
