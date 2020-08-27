@@ -4,7 +4,7 @@ require_relative 'sklonator'
 class Game
   LETTERS = ('А'..'Я').map(&:to_s) << 'Ё'
 
-  attr_reader :attempts
+  attr_reader :attempts, :state
 
   def initialize(word)
     @word = word.upcase
@@ -14,17 +14,6 @@ class Game
     @correct_letters = []
     @correct_letters << @word[0]
     @correct_letters << @word[-1]
-  end
-
-  def description
-    <<~TEXT
-      Ваша задача - угадать слово, загаданное компьютером.
-      В каждой попытке вы пробуете угадать одну букву.
-      Если буква есть в слове, она открывается.
-      Если нет - рисуется новый элементт виселицы.
-      Успеете отгадать слово до того, как человечка повесят -
-      Вы выиграли. Не успеете - выиграл компьютер.
-    TEXT
   end
 
   def finished?
@@ -69,11 +58,6 @@ class Game
         '-'
       end
     end.join
-  end
-
-  def field
-    file_path = File.join(File.dirname(__FILE__), '..', 'data', "#{@state}.txt")
-    File.readlines(file_path, chomp: true)
   end
 
   def letters_declension

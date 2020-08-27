@@ -1,5 +1,5 @@
 # Задача 22-5 — Виселица в github
-#
+
 require_relative 'lib/game'
 require_relative 'lib/game_io_console'
 
