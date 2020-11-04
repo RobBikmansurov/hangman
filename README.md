@@ -25,6 +25,7 @@ Project inspired by great video from goodprogrammer.ru :smile:
 Created by [Rob Bikmansurov](mailto:robb@mail.ru) - feel free to contact me!
 
 ## License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 MIT
 see in [LICENSE](LICENSE) file
