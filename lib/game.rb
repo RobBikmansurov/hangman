@@ -45,7 +45,7 @@ class Game
   def result
     return "\nВы угадали слово #{@word} за #{attempts_declension} и заслуженно победили!" if guessed?
 
-    result = field
+    result = ''
     result << "\nВы пробовали (#{letters_declension}): #{@wrong_letters.join(', ')}" if @wrong_letters.size.positive?
     result << "\nВы проиграли! Было загадано слово #{@word}"
   end

@@ -17,10 +17,6 @@ $ cd ./hangman
 $ bundle 
 $ bundle exec ruby main.rb
 ```
-## Status
-This is my training ruby project from lesson 22-5.
-
-After task 52-2 the game plays colors.
 
 ## Inspiration
 Project inspired by great video from goodprogrammer.ru :smile:
@@ -33,5 +29,5 @@ Created by [Rob Bikmansurov](mailto:robb@mail.ru) - feel free to contact me!
 MIT
 see in [LICENSE](LICENSE) file
 
-Copyright &copy; 2020 [Rob Bikmansurov](https://robbikmansurov.github.io/cv/)
+Copyright &copy; 2020 [Rob Bikmansurov](https://bikmansurov.ru/cv/)
 
